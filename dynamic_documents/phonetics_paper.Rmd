@@ -201,15 +201,15 @@ pse_stress %>%
     
 3. Try running it again with "always_allow_html: yes" in the YAML header.
 
-#```{r dur-mean-nice}
+-->
+
+```{r dur-mean-nice}
  pse_stress %>% 
   group_by(Position) %>%
   summarize(Duration = round(mean(Duration), 3)) %>%
   kable(format = 'html') %>%
   kable_styling(full_width = FALSE)
-#```
-
--->
+```
 
 This next table is a bit more complicated and presents the mean duration of each syllable in sentence final and sentence medial position. 
 
@@ -235,17 +235,19 @@ This more complex table below demonstrates the mean duration for each of the six
 1. Delete the comment tags to see a more complex, but nice looking table
 
 
-#```{r dur-means-peaker}
+
+
+-->
+
+```{r dur-means-peaker}
 pse_stress %>% 
   group_by(Participant, Final, Position) %>%
   summarize(Duration = round(mean(Duration), 3)) %>%
   kable(format = 'html') %>%
   kable_styling(full_width = FALSE) %>%
-  column_spec(1, bold = T)
-#```
-
--->
-
+  column_spec(1, bold = T) %>% 
+  collapse_rows(columns = 1:2, valign = "middle")
+```
 
 <!-- TASK
 
@@ -311,7 +313,8 @@ pse_stress <- read_tsv("data/pse-stress-simplified.csv") %>%
                                 Focus = fct_recode(Focus),
                                 Final = fct_recode(Final),
                                 Participant = fct_recode(Participant), 
-                                Final = fct_relevel(Final, "non-final", "final")
+                                Final = fct_relevel(Final, "non-final", "final") 
+                                # single line refactor
                                 )
 
  
