@@ -2,7 +2,11 @@
 title: "The Typology of Causative-Applicative Syncretism"
 author: "Bradley McDonnell"
 date: "1/1/2019"
-output: ioslides_presentation
+bibliography: bib/caus-appl.bib
+output: 
+  ioslides_presentation:
+    widescreen: true
+    incremental: true
 ---
 
 
