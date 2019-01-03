@@ -16,12 +16,12 @@ output: html_document
 -->
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-```{r data}
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
 
 # Loading libraries
 library(tidyverse)
@@ -47,7 +47,7 @@ head(pse_stress)
 <!--- TASK: You'll notice that the code and a message are printed
 
 1. Add an option to the code chunk to supress the message. 
-2. Add an option to the code chunk to suppress the code entirely.
+2. Add an option to the code chunk to suppress the code entirely. 
 3. Do you need both options if you want to supress both?
 
 
@@ -115,8 +115,8 @@ The twelve target words are shown in the table below. Syllables in Besemah are m
 
 
 
-|**Phoneme**| **Word** |                |
-|-----------|----------|----------------|
+|**Phoneme**| **Word** | **Meaning**       |
+|-----------:|----------:|:----------------|
 | /i/       | /titi/   | 'to cross over'|
 |           | /pipis/  | 'to pulverize' |
 |           | /tʃiŋki/ | 'must have'    |

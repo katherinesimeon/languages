@@ -1,0 +1,488 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Besemah stress},
+            pdfauthor={Bradley McDonnell},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Besemah stress}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \subtitle{A basic example}
+  \author{Bradley McDonnell}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{12/29/2018}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+
+\begin{document}
+\maketitle
+
+\begin{verbatim}
+## # A tibble: 6 x 13
+##   WordOrder Word  Participant Position Vowel Weight Focus   Final Duration
+##       <int> <fct> <fct>       <fct>    <fct> <fct>  <fct>   <fct>    <dbl>
+## 1         1 tutus S1          penult   u     light  in-foc~ final   0.0754
+## 2         1 tutus S1          ultima   u     light  in-foc~ final   0.189 
+## 3         3 tatap S1          penult   a     light  in-foc~ final   0.0697
+## 4         3 tatap S1          ultima   a     light  in-foc~ final   0.149 
+## 5         4 pipis S1          penult   i     light  in-foc~ final   0.0799
+## 6         4 pipis S1          ultima   i     light  in-foc~ final   0.213 
+## # ... with 4 more variables: F0 <dbl>, H1H2 <dbl>, Intensity <dbl>,
+## #   SpectralBalance <dbl>
+\end{verbatim}
+
+\section{Introduction}\label{introduction}
+
+There has been much disagreement over the status of word-level stress in
+the languages of western Indonesia, particularly in regards to
+well-known varieties of Malay, such as Standard Indonesian (van Zanten,
+Goedemans, and Pacilly 2003).\footnote{Text from this example is lifted
+  directly from McDonnell \& Turnbull (2018).} Word-level stress has
+been claimed to fall predictably on the penultimate syllable unless it
+contains a schwa in which case it falls on the ultima (Adisasmito-Smith
+and Cohn 1996). However, since the late 1990s, an increasing number of
+studies have questioned this position for Standard Indonesian (van
+Zanten and van Heuven 2004), and more recent studies have pointed out
+the complications associated with studies of Standard Indonesian due to
+significant influence from substrate languages like Javanese (Goedemans
+and van Zanten 2007).
+
+The present study is designed to tease apart different factors relating
+to prosodic prominence in Besemah. It does so by investigating the
+realization of common acoustic correlates of stress (f\(_0\), duration,
+intensity, and spectral tilt) within target words that vary in their
+sentence position (sentence-medial vs.~sentence-final position) and
+information status (`in focus' vs. `out of focus').
+
+\subsection{Besemah word level stress}\label{besemah-word-level-stress}
+
+Like many of the languages of western Indonesia, Besemah has received
+little attention since the Dutch colonial period (McDonnell 2008). The
+only study of Besemah prosody tentatively concluded that word-level
+stress in Besemah falls on the final syllable of the word and is cued by
+increased intensity (McDonnell 2016). However, there are several
+complications to this analysis, and word-level stress appears to be
+affected by the presence of final L boundary tones.
+
+\section{Methods}\label{methods}
+
+This section describe the methodology used in this study.
+
+\subsection{Design}\label{design}
+
+Target words were collected using an information gap task. This task
+involved two talkers: a confederate who asked questions and a naive
+participant who answered them. They sat facing each other, each able to
+see only their own laptop screen. Both the confederate and participant
+could see a question on the top of the screen that the confederate was
+to ask, but only the participant's screen displayed the answer.The task
+was for the confederate to ask the question and the participant to
+provide an answer in a complete sentence modeled upon the question. The
+confederate then circled the answer on the paper. One female native
+speaker of Besemah acted as the confederate for all participants.
+
+\subsection{Materials}\label{materials}
+
+Question-answer pairs were constructed which varied in information
+status (target word `in focus' or `out of focus') and sentence position
+(target word sentence-medial or sentence-final). The type and structure
+of the question depended upon the combination of its sentence position
+and information status. Question type differed based upon whether the
+target word was `in focus' or `out of focus.'\footnote{`Focus', as a
+  term of art in linguistics, is fraught with definitional difficulties.
+  In our `in focus' condition, the target word is the answer to the
+  current question under discussion (Roberts 2012). In the `out of
+  focus' condition, on the other hand, the target word is given, not new
+  (Schwarzschild 1999). This definition may not match exactly with the
+  definitions used by other researchers, and we invite the reader to
+  mentally substitute their favorite terms that fit their proclivities
+  if they are so inclined.} The sentence position simply altered the
+shape of the question so that the target word would occur in
+sentence-medial or sentence-final position. The table below presents
+example question-answer pairs for the `in focus' condition. In this
+table the target word \emph{susu} `milk' is used as an example and
+displayed in boldface.
+
+\begin{longtable}[]{@{}lll@{}}
+\caption{Information status condition}\tabularnewline
+\toprule
+\textbf{Position} & & \textbf{Question/Answer}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Position} & & \textbf{Question/Answer}\tabularnewline
+\midrule
+\endhead
+final & Q: & \emph{Sebelah kanan kate ape?}\tabularnewline
+& & `On the right side is what word?'\tabularnewline
+& A: & \emph{Sebelah kanan kate \textbf{susu}.}\tabularnewline
+& & `On the right side is \textbf{milk}.'\tabularnewline
+medial & Q: & \emph{Kate ape sebelah kanan?}\tabularnewline
+& & `What word is on the right side?'\tabularnewline
+& A: & \emph{Kate} \textbf{\emph{susu}} \emph{sebelah
+kanan.}\tabularnewline
+& & `The word \textbf{milk} is on the right side.'\tabularnewline
+\bottomrule
+\end{longtable}
+
+For stimuli that seek to collect target words that are `out of focus',
+the confederate asked a different set of questions. Examples are shown
+in the table below. Unlike the `in focus' condition, the same target
+word was mentioned four times in immediately preceding turns. This
+mentioning of the target word served to keep the word as discourse-given
+and thus `out of focus'. Further, each time the word appeared for the
+first time in a block it was introduced by asking the question
+\emph{Titu kate ape?} `What word is this?'. The target word in this
+question is `in focus' in this utterance and not considered in the
+analysis. However, this allowed the confederate to ask questions about
+the target word without it being `in focus'. Thus, the subsequent
+repetitions of the target word ask where the target word appears on the
+screen, the top, bottom, left or right side. In these four questions,
+the target word is `out of focus' while the word describing its position
+is `in focus'. This table presents example question-answer pairs for the
+`out of focus' condition.
+
+The twelve target words are shown in the table below. Syllables in
+Besemah are maximally CVC with some restrictions on the coda consonants
+and words are most commonly bisyllabic. The words feature all four
+phonotactically legal combinations of light (CV) and heavy (CVC)
+syllables. Each of the four vowels /i, u, a, ə/ was present and matched
+in both syllables to allow for easier intra-word comparisons.
+Phonotactically, the high vowels /i, u/ show no restrictions, but /a/
+does not occur word-finally and /ə/ does not occur in final closed
+syllables.
+
+\begin{longtable}[]{@{}rrl@{}}
+\caption{Target words used in constructing question-answer
+pairs.}\tabularnewline
+\toprule
+\textbf{Phoneme} & \textbf{Word} &\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\textbf{Phoneme} & \textbf{Word} &\tabularnewline
+\midrule
+\endhead
+/i/ & /titi/ & `to cross over'\tabularnewline
+& /pipis/ & `to pulverize'\tabularnewline
+& /tʃiŋki/ & `must have'\tabularnewline
+& /sintiŋ/ & `crooked'\tabularnewline
+/u/ & /susu/ & `milk'\tabularnewline
+& /tutus/ & `to pound'\tabularnewline
+& /tuŋku/ & `hearth'\tabularnewline
+& /tuntun/ & `to watch'\tabularnewline
+/a/ & --- &\tabularnewline
+& /tatap/ & `to touch'\tabularnewline
+& --- &\tabularnewline
+& /pantas/ & `to be fitting'\tabularnewline
+/ə/ & /tʃətə/ & `to be exact'\tabularnewline
+& --- &\tabularnewline
+& /təmpə/ & `to forge'\tabularnewline
+& --- &\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Procedure}\label{procedure}
+
+There were four experimental blocks that combined the possible
+combinations of information status and sentence position:
+
+\begin{itemize}
+\tightlist
+\item
+  Block A: sentence-medial, `in focus'
+\item
+  Block B: sentence-final, `in focus'
+\item
+  Block C: sentence-medial, `out of focus'
+\item
+  Block D: sentence-final, `in focus'
+\end{itemize}
+
+All recordings were made on a Marantz PMD-670 solid state recorder with
+a sampling frequency of 48kHz and stored as wav files. The participant
+was recorded on the left channel with a Shure WH-30 headset microphone
+while the confederate was recorded on the right channel with a Shure
+SM10A headset microphone.
+
+Each target word was repeated four times for each of the four blocks (12
+words \(\times\) 4 repetitions \(\times\) 4 blocks = 192 tokens). The
+presentation of these words was randomized and the presentation of each
+block was also randomized.
+
+\subsection{Participants}\label{participants}
+
+The experiment was conducted by the first author over several days in
+March\textasciitilde{}2015 in the Besemah village of Karang Tanding. The
+experiment was conducted entirely in Besemah with no interlanguage. The
+six female participants in this study are native speakers of Besemah and
+reside in or near the village of Karang Tanding in South Sumatra
+province. They range in age from 19 to 30 years old.
+
+\section{Acoustic correlates of
+stress}\label{acoustic-correlates-of-stress}
+
+This section takes a preliminary look at the acoustic correlates of
+stress in Besemah.
+
+\subsection{Duration}\label{duration}
+
+Duration in the final syllable appears to be longer compared to duration
+of the penultimate syllable. It is noteworthy, however, that while
+duration may be the most robust correlate for stress, it is confounded
+with word-final lengthening.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A simple boxplot of intensity}
+\NormalTok{dur <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(pse_stress, }\KeywordTok{aes}\NormalTok{(Position, Duration))}
+\NormalTok{dur }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{rev}\NormalTok{(}\KeywordTok{levels}\NormalTok{(pse_stress}\OperatorTok{$}\NormalTok{Position)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phonetics_paper_files/figure-latex/duration-1.pdf}
+
+As expected, when the word is in the final position in the sentence, the
+duration is longer in the ultimae. The penult appears to be fairly
+similar whether or not the word is sentence final or not.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A simple boxplot of intensity}
+\NormalTok{dur <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(pse_stress, }\KeywordTok{aes}\NormalTok{(Position, Duration))}
+\NormalTok{dur }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{Final, }\DataTypeTok{ncol =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_flip}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{rev}\NormalTok{(}\KeywordTok{levels}\NormalTok{(pse_stress}\OperatorTok{$}\NormalTok{Position)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phonetics_paper_files/figure-latex/duration-final-1.pdf}
+
+The fairly simple table below shows the mean duration for penult and
+final syllables. It is clear that the ultima is longer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pse_stress }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Position) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{Duration =} \KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(Duration), }\DecValTok{3}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{kable}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tabular}{l|r}
+\hline
+Position & Duration\\
+\hline
+penult & 0.070\\
+\hline
+ultima & 0.152\\
+\hline
+\end{tabular}
+
+This next table is a bit more complicated and presents the mean duration
+of each syllable in sentence final and sentence medial position.
+
+This more complex table below demonstrates the mean duration for each of
+the six participants in both sentence final and sentence medial
+positions.
+
+\subsection{Intensity}\label{intensity}
+
+The interaction between sentence position and intensity is very similar
+across speakers. Speakers show the same pattern: the ultima is more
+intense when it is in non-final sentence position.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# A simple boxplot of intensity}
+\NormalTok{int <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(pse_stress, }\KeywordTok{aes}\NormalTok{(Position, Intensity, }\DataTypeTok{fill=}\NormalTok{Final))}
+\NormalTok{int }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{Participant)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{phonetics_paper_files/figure-latex/intensity-1.pdf}
+
+\subsection{Pitch}\label{pitch}
+
+\section{Conclusion}\label{conclusion}
+
+There are some interesting data here, but we cannot conclude much at
+this point.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\hypertarget{ref-adisasmito1996phonetic}{}
+Adisasmito-Smith, Niken, and Abigal C. Cohn. 1996. ``Phonetic Correlates
+of Primary and Secondary Stress in Indonesian: A Preliminary Study.''
+\emph{Working Papers of the Cornell Phonetics Laboratory} 11: 1--15.
+
+\hypertarget{ref-goedemans2007stress}{}
+Goedemans, Robertus Wilhelmus Nicolaas, and Ellen van Zanten. 2007.
+``Stress and Accent in Indonesian.'' In \emph{Prosody in Indonesian
+Languages}, edited by Vincent J van Heuven and Ellen van Zanten, 35--62.
+Utrecht: LOT.
+
+\hypertarget{ref-mcdonnell2008conservative}{}
+McDonnell, Bradley. 2008. ``A Conservative Vowel Phoneme Inventory of
+Sumatra: The Case of Besemah.'' \emph{Oceanic Linguistics} 47 (2):
+409--32.
+
+\hypertarget{ref-mcdonnell2016acoustic}{}
+---------. 2016. ``Acoustic Correlates of Stress in Besemah.'' In
+\emph{NUSA: Linguistic Studies of Languages in and Around Indonesia,
+Studies in Language Typology and Change}, edited by Timothy McKinnon and
+Yanti, 60:1--28.
+
+\hypertarget{ref-roberts2012}{}
+Roberts, Craige. 2012. ``Information Structure in Discourse: Towards an
+Integrated Formal Theory of Pragmatics.'' \emph{Semantics and
+Pragmatics} 5 (6): 1--69.
+doi:\href{https://doi.org/10.3765/sp.5.6}{10.3765/sp.5.6}.
+
+\hypertarget{ref-schwarzschild1999}{}
+Schwarzschild, Roger. 1999. ``GIVENness, \textsc{AvoidF} and Other
+Constraints on the Placement of Accent.'' \emph{Natural Language
+Semantics} 7: 141--77.
+
+\hypertarget{ref-vanzanten2004word}{}
+van Zanten, Ellen, and Vincent J. van Heuven. 2004. ``Word Stress in
+Indonesian: Fixed or Free.'' \emph{NUSA, Linguistic Studies of
+Indonesian and Other Languages in Indonesia} 53: 1--20.
+
+\hypertarget{ref-vanzanten2003status}{}
+van Zanten, Ellen, Robertus Wilhelmus Nicolaas Goedemans, and Jos J.A.
+Pacilly. 2003. ``The Status of Word Stress in Indonesian.'' In \emph{The
+Phonological Spectrum: Suprasegmental Structure}, edited by Jeroen van
+de Weijer, Vincent J. van Heuven, and Harry van der Hulst, 151--75.
+Amsterdam: John Benjamins.
+
+
+\end{document}
